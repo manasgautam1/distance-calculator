@@ -27,12 +27,12 @@ function getLocation(e) {
     avoidTolls: false,
   };
   service.getDistanceMatrix(request).then((response) => {
-    outputDist.innerHTML = response.rows[0].elements[0].distance.text;
+    outputDist.innerHTML =
+      (response.rows[0].elements[0].distance.value / 1000).toFixed(2) + ' km';
     outputDur.innerHTML = response.rows[0].elements[0].duration.text;
-    outputPrice.innerHTML = (
-      (response.rows[0].elements[0].distance.value / 1000) *
-      20
-    ).toFixed(2);
+    outputPrice.innerHTML =
+      'Rs. ' +
+      (response.rows[0].elements[0].distance.value / 1000).toFixed(2) * 20;
   });
 }
 
